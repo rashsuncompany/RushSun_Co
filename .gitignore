@@ -29,14 +29,7 @@ access_log
 *.swp
 
 # Exclude everything in home directory except our project
-/*
-!index.html
-!assets/
-!.gitignore
-!README.md
-!.nojekyll
-!sitemap.xml
-!robots.txt
+# (Removed - was causing issues)
 
 # Exclude backend folder if exists
 backend/
