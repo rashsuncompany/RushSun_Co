@@ -77,7 +77,20 @@ const INLINE_TRANSLATIONS = {
         feature_excellence: 'Excellence Driven',
         feature_quality: 'Quality Focused',
         whatsapp_iran: 'WhatsApp Iran',
-        whatsapp_italy: 'WhatsApp Italy'
+        whatsapp_italy: 'WhatsApp Italy',
+        experience_title: 'Team Professional Experience',
+        experience_subtitle: 'Enterprise-Level Expertise',
+        experience_description: 'Our team members bring extensive experience from leading technology companies, contributing to large-scale enterprise solutions.',
+        experience_role: 'Role',
+        experience_period: 'Period',
+        experience_technologies: 'Technologies & Skills',
+        experience_project_type: 'Project Type',
+        experience_enterprise: 'Enterprise Solutions',
+        experience_cybersecurity: 'Cybersecurity Solutions',
+        experience_iot: 'IoT Solutions',
+        experience_fullstack: 'Full-Stack Development',
+        experience_details: 'Details',
+        experience_team_member: 'Team Member'
     },
     fa: {
         nav_home: 'خانه',
@@ -156,7 +169,20 @@ const INLINE_TRANSLATIONS = {
         feature_excellence: 'هدایت شده با تعالی',
         feature_quality: 'متمرکز بر کیفیت',
         whatsapp_iran: 'واتس‌اپ ایران',
-        whatsapp_italy: 'واتس‌اپ ایتالیا'
+        whatsapp_italy: 'واتس‌اپ ایتالیا',
+        experience_title: 'تجربه حرفه‌ای تیم',
+        experience_subtitle: 'تخصص در سطح سازمانی',
+        experience_description: 'اعضای تیم ما تجربه گسترده‌ای از شرکت‌های پیشرو در زمینه تکنولوژی دارند و در راهکارهای سازمانی در مقیاس بزرگ مشارکت داشته‌اند.',
+        experience_role: 'نقش',
+        experience_period: 'دوره',
+        experience_technologies: 'تکنولوژی‌ها و مهارت‌ها',
+        experience_project_type: 'نوع پروژه',
+        experience_enterprise: 'راهکارهای سازمانی',
+        experience_cybersecurity: 'راهکارهای امنیت سایبری',
+        experience_iot: 'راهکارهای اینترنت اشیا',
+        experience_fullstack: 'توسعه فول‌استک',
+        experience_details: 'جزئیات',
+        experience_team_member: 'عضو تیم'
     },
     it: {
         nav_home: 'Home',
@@ -235,7 +261,20 @@ const INLINE_TRANSLATIONS = {
         feature_excellence: 'Guidati dall\'Eccellenza',
         feature_quality: 'Focalizzati sulla Qualità',
         whatsapp_iran: 'WhatsApp Iran',
-        whatsapp_italy: 'WhatsApp Italia'
+        whatsapp_italy: 'WhatsApp Italia',
+        experience_title: 'Esperienza Professionale del Team',
+        experience_subtitle: 'Competenze di Livello Enterprise',
+        experience_description: 'I membri del nostro team portano un\'esperienza estesa da aziende tecnologiche leader, contribuendo a soluzioni enterprise su larga scala.',
+        experience_role: 'Ruolo',
+        experience_period: 'Periodo',
+        experience_technologies: 'Tecnologie e Competenze',
+        experience_project_type: 'Tipo di Progetto',
+        experience_enterprise: 'Soluzioni Enterprise',
+        experience_cybersecurity: 'Soluzioni di Cybersecurity',
+        experience_iot: 'Soluzioni IoT',
+        experience_fullstack: 'Sviluppo Full-Stack',
+        experience_details: 'Dettagli',
+        experience_team_member: 'Membro del Team'
     }
 };
 
@@ -417,12 +456,22 @@ let i18n;
 document.addEventListener('DOMContentLoaded', async () => {
     i18n = new I18n();
     
+    // Set default language to English if not set
+    if (!localStorage.getItem('language')) {
+        localStorage.setItem('language', 'en');
+        i18n.currentLang = 'en';
+    }
+    
     // Check URL parameter for language first
     const urlParams = new URLSearchParams(window.location.search);
     const langParam = urlParams.get('lang');
     if (langParam && ['en', 'fa', 'it'].includes(langParam)) {
         i18n.currentLang = langParam;
         localStorage.setItem('language', langParam);
+    } else {
+        // Ensure default is English
+        i18n.currentLang = localStorage.getItem('language') || 'en';
+        localStorage.setItem('language', i18n.currentLang);
     }
     
     // Initialize translations
